@@ -12,6 +12,7 @@ public class Routine {
 	static int rand3; 			// 0, 1, 2
 	static int rand4; 			// 0, 1, 2, 3
 	static String textLine;
+	static String hungerText;
 	
 	public static void feedDino() {
 		if (food >= 1) {
@@ -19,12 +20,17 @@ public class Routine {
 			food --;
 			tri.happy += 2;
 			tri.hunger -= 5;
+			checkHunger();
 			textLine = "You fed " + tri.name + 
 					". He liked it!";
 		}
 		else {
 			textLine = "" + tri.name + " has no food! Go find more!";
 		}	
+		
+		if (time >= 22) {
+			sleep();
+		}
 	}
 	
 	public static void explore() {
@@ -61,9 +67,14 @@ public class Routine {
 			else {
 				textLine = "He looked all over, but no food was found...";
 			}
+
+			}
 			tri.hunger += 5;
 			time += 5.00;
-		}
+			checkHunger();
+			if (time >= 22) {
+				sleep();
+			}
 			
 	}
 	
@@ -89,8 +100,37 @@ public class Routine {
 				textLine = tri.name + " found a treasure chest! But you don't have a key!!";
 			}
 		}
+		time += 2;
 		tri.hunger += 5;
 		tri.happy += 5;
+		checkHunger();
+		if (time >= 22) {
+			sleep();
+		}
+	}
+	
+	public static void checkHunger() {
+		if (tri.hunger >= 90) {
+			hungerText = "Starving";
+		}
+		else if (tri.hunger >= 60) {
+			hungerText = "Very Hungry";
+		}
+		else if (tri.hunger >= 40) {
+			hungerText = "Hungry";
+		}
+		else {
+			hungerText = "Not hungry";
+		}
+	}
+	
+	// sleep is triggered if time reaches or passes 22.00
+	public static void sleep() {
+		textLine = tri.name + " is exhausted. He fell asleep.";
+		tri.happy = (int) (tri.happy + (30 - time));
+		time = 6.00;
+		age++;
+		tri.hunger += 5;
 	}
 	
 	public Routine() {
