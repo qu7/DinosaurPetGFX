@@ -16,8 +16,16 @@ public class DWindow extends JFrame {
 		setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		
+		JLabel lblHunger = new JLabel("hunger");
+		lblHunger.setBounds(321, 63, 103, 14);
+		getContentPane().add(lblHunger);
+		
+		JLabel lblHappy = new JLabel("happy");
+		lblHappy.setBounds(321, 38, 103, 14);
+		getContentPane().add(lblHappy);
+		
 		JLabel lblTime = new JLabel("Time: 06:00");
-		lblTime.setBounds(321, 63, 83, 14);
+		lblTime.setBounds(321, 113, 83, 14);
 		getContentPane().add(lblTime);
 		
 		JLabel lblFood = new JLabel("Food: ");
@@ -25,7 +33,7 @@ public class DWindow extends JFrame {
 		getContentPane().add(lblFood);
 		
 		JLabel lblAge = new JLabel("Age");
-		lblAge.setBounds(321, 38, 103, 14);
+		lblAge.setBounds(321, 88, 103, 14);
 		getContentPane().add(lblAge);
 		
 		JLabel lblGold = new JLabel("Gold: ");
@@ -54,6 +62,9 @@ public class DWindow extends JFrame {
 				lblText.setText(Routine.textLine);
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
+				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
+				lblHappy.setText("happy");
+				lblHunger.setText(Routine.hungerText);
 			}
 		});
 		btnFeed.setBounds(10, 206, 89, 44);
@@ -67,11 +78,12 @@ public class DWindow extends JFrame {
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
+				lblHappy.setText("happy");
+				lblHunger.setText(Routine.hungerText);
 			}
 		});
 		btnExplore.setBounds(109, 206, 89, 44);
 		getContentPane().add(btnExplore);
-		
 		
 		JButton btnPlay = new JButton("Play");
 		btnPlay.addActionListener(new ActionListener() {
@@ -81,19 +93,22 @@ public class DWindow extends JFrame {
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
+				lblHappy.setText("happy");
+				lblHunger.setText(Routine.hungerText);
 			}
 		});
 		
 		btnPlay.setBounds(208, 206, 89, 44);
 		getContentPane().add(btnPlay);
-	}
 	
+
+	}
+		
 	public static void main(String args[]) {
 		DWindow window = new DWindow();
 		window.setSize(460, 300);
 		window.setVisible(true);
 		new Routine();
 		window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		
 	}
 }
