@@ -47,19 +47,38 @@ public class DWindow extends JFrame {
 		JLabel lblName = new JLabel("name");
 		lblName.setBounds(321, 13, 103, 14);
 		getContentPane().add(lblName);
+		lblName.setText(Routine.tri.name);
 		
-		JLabel lblText = new JLabel();
-		lblText.setForeground(Color.BLACK);
-		lblText.setBackground(Color.WHITE);
-		lblText.setBounds(10, 133, 287, 62);
-		getContentPane().add(lblText);
-		lblText.setText(Routine.textLine);
+		JLabel lblText1 = new JLabel();
+		lblText1.setForeground(Color.BLACK);
+		lblText1.setBackground(Color.WHITE);
+		lblText1.setBounds(10, 129, 287, 21);
+		getContentPane().add(lblText1);
+		lblText1.setText("");
 		
+		JLabel lblText2 = new JLabel();
+		lblText2.setText((String) null);
+		lblText2.setForeground(Color.BLACK);
+		lblText2.setBackground(Color.WHITE);
+		lblText2.setBounds(10, 150, 287, 21);
+		getContentPane().add(lblText2);
+		lblText2.setText("");
+		
+		JLabel lblText3 = new JLabel();
+		lblText3.setText((String) null);
+		lblText3.setForeground(Color.BLACK);
+		lblText3.setBackground(Color.WHITE);
+		lblText3.setBounds(10, 171, 287, 21);
+		getContentPane().add(lblText3);
+		lblText1.setText("");
+
 		JButton btnFeed = new JButton("Feed");
 		btnFeed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Routine.feedDino();
-				lblText.setText(Routine.textLine);
+				lblText1.setText(Routine.textArray.get(0));
+				lblText2.setText(Routine.textArray.get(1));
+				lblText3.setText(Routine.textArray.get(2));
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
@@ -74,7 +93,7 @@ public class DWindow extends JFrame {
 		btnExplore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Routine.explore();
-				lblText.setText(Routine.textLine);
+				lblText1.setText(Routine.textLine);
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
@@ -89,7 +108,7 @@ public class DWindow extends JFrame {
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Routine.play();
-				lblText.setText(Routine.textLine);
+				lblText1.setText(Routine.textLine);
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
@@ -101,7 +120,6 @@ public class DWindow extends JFrame {
 		btnPlay.setBounds(208, 206, 89, 44);
 		getContentPane().add(btnPlay);
 	
-
 	}
 		
 	public static void main(String args[]) {
