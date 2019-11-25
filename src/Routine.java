@@ -144,29 +144,23 @@ public class Routine {
 		textArray.add("");
 		textArray.add("");
 		textArray.add("");
+
+		textArray.set(0, textArray.get(1));
+		textArray.set(1, textArray.get(2));
+		textArray.set(2, textLine);
 		
-		if (start == true) {
-			textArray.set(0, "You got a new pet!");
-			textArray.set(1, "It's a triceratops");
-			textArray.set(2, "Take good care of it!");
-			start = false;
-		}
-		
-		else {
-			textArray.set(0, textArray.get(1));
-			textArray.set(1, textArray.get(2));
-			textArray.set(2, textLine);
-		}
 	}
 	
 	// sleep is triggered if time reaches or passes 22.00
 	public static void sleep() {
 		textLine = tri.name + " is exhausted. He fell asleep.";
+		updateText();
 		tri.happy = (int) (tri.happy + (30 - time));
-		time = 6.00;
 		age++;
 		tri.hunger += 5;
-		textLine = tri.name + " wakes up feeling refreshed!";
+		textLine = tri.name + " got " + ((30 - time)) + " hours of sleep!";
+		time = 6.00;
+		updateText();
 	}
 
 	public Routine() {
