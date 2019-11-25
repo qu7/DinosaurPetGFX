@@ -7,8 +7,6 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
 
 public class DWindow extends JFrame {
 	public DWindow() {
@@ -55,6 +53,7 @@ public class DWindow extends JFrame {
 		lblText1.setBounds(10, 129, 287, 21);
 		getContentPane().add(lblText1);
 		lblText1.setText("");
+		lblText1.setForeground((Color.LIGHT_GRAY));
 		
 		JLabel lblText2 = new JLabel();
 		lblText2.setText((String) null);
@@ -63,6 +62,7 @@ public class DWindow extends JFrame {
 		lblText2.setBounds(10, 150, 287, 21);
 		getContentPane().add(lblText2);
 		lblText2.setText("");
+		lblText2.setForeground((Color.GRAY));
 		
 		JLabel lblText3 = new JLabel();
 		lblText3.setText((String) null);
@@ -71,6 +71,7 @@ public class DWindow extends JFrame {
 		lblText3.setBounds(10, 171, 287, 21);
 		getContentPane().add(lblText3);
 		lblText1.setText("");
+		lblText3.setForeground((Color.BLACK));
 
 		JButton btnFeed = new JButton("Feed");
 		btnFeed.addActionListener(new ActionListener() {
@@ -93,7 +94,9 @@ public class DWindow extends JFrame {
 		btnExplore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Routine.explore();
-				lblText1.setText(Routine.textLine);
+				lblText1.setText(Routine.textArray.get(0));
+				lblText2.setText(Routine.textArray.get(1));
+				lblText3.setText(Routine.textArray.get(2));
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
@@ -108,7 +111,9 @@ public class DWindow extends JFrame {
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Routine.play();
-				lblText1.setText(Routine.textLine);
+				lblText1.setText(Routine.textArray.get(0));
+				lblText2.setText(Routine.textArray.get(1));
+				lblText3.setText(Routine.textArray.get(2));
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
