@@ -3,6 +3,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
+import main.resources.graphics.Intro;
+
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
@@ -83,6 +85,7 @@ public class DWindow extends JFrame {
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
+				lblAge.setText("Age: " + String.valueOf(Routine.age) + " days");
 				lblHappy.setText("happy");
 				lblHunger.setText(Routine.hungerText);
 			}
@@ -100,6 +103,7 @@ public class DWindow extends JFrame {
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
+				lblAge.setText("Age: " + String.valueOf(Routine.age) + " days");
 				lblHappy.setText("happy");
 				lblHunger.setText(Routine.hungerText);
 			}
@@ -117,6 +121,7 @@ public class DWindow extends JFrame {
 				lblFood.setText("Food: " + String.valueOf(Routine.food));
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
+				lblAge.setText("Age: " + String.valueOf(Routine.age) + " days");
 				lblHappy.setText("happy");
 				lblHunger.setText(Routine.hungerText);
 			}
@@ -129,6 +134,7 @@ public class DWindow extends JFrame {
 		
 	public static void main(String args[]) {
 		DWindow window = new DWindow();
+		window.setTitle("DinosaurPetGFX");
 		window.setSize(460, 300);
 		window.setVisible(true);
 		new Routine();
