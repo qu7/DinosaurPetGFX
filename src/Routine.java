@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import main.resources.graphics.Intro;
+
 public class Routine {
 	static Dinosaur tri = new Dinosaur(0, 50, 50, "Triceratops");
 	static int food = 3;
@@ -10,12 +12,11 @@ public class Routine {
 	static double time = 6.00;
 	static boolean start = true;
 	boolean life = true;
-	static int rand2;			// 0, 1 
-	static int rand3; 			// 0, 1, 2
-	static int rand4; 			// 0, 1, 2, 3
-	static String textLine;
+	static boolean window = true;
+	static int rand2, rand3, rand4;			// 0, 1 
+	static String textLine, hungerText;
 	static ArrayList<String> textArray = new ArrayList<String>();
-	static String hungerText;
+
 	
 	public static void feedDino() {
 		if (food >= 1) {
@@ -46,9 +47,9 @@ public class Routine {
 			if (rand4 >= 1) {
 				textLine = "He looks pretty confident..."; 
 				textLine = "Success! He found a lot of food!";	
-				updateText();
-
 				food += 3;
+				updateText();
+				
 				if (rand4 == 3) {
 					textLine = tri.name + " also found a key!"; 
 					updateText();
@@ -56,11 +57,11 @@ public class Routine {
 				}
 			}
 			else {
-			
+				textLine = "Not much food was found."; 
+				food += 1;
 			}
-			textLine = "Not much food was found."; 
 			updateText();
-			food += 1;
+			
 		}
 		else if (tri.happy >= 30 && tri.happy < 80) {
 			// from 0 to 2, if rand3 equals 1 or 2
@@ -141,14 +142,15 @@ public class Routine {
 	}
 	
 	public static void updateText() {
-		textArray.add("");
-		textArray.add("");
-		textArray.add("");
-
-		textArray.set(0, textArray.get(1));
-		textArray.set(1, textArray.get(2));
-		textArray.set(2, textLine);
-		
+		if (window == false) {
+			textArray.add("");
+			textArray.add("");
+			textArray.add("");
+	
+			textArray.set(0, textArray.get(1));
+			textArray.set(1, textArray.get(2));
+			textArray.set(2, textLine);
+		}	
 	}
 	
 	// sleep is triggered if time reaches or passes 22.00
@@ -164,6 +166,8 @@ public class Routine {
 	}
 
 	public Routine() {
-
+		Intro intro = new Intro();
+		intro.setVisible(true);
+		window = false;
 	}
 }
