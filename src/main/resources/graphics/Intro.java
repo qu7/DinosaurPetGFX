@@ -26,10 +26,6 @@ public class Intro extends JDialog {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * Create the dialog.
-	 */
 	public Intro() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -43,7 +39,7 @@ public class Intro extends JDialog {
 		contentPanel.add(lblPhoto);
 		
 		JTextPane txtpnIntro = new JTextPane();
-		txtpnIntro.setText("Congratulations! You are the proud parent of a baby dinosaur. Keep it happy and healthy by feeding it and letting it explore, but don't keep it out too late! Good luck!");
+		txtpnIntro.setText("Congratulations! You are the proud parent of a baby dinosaur. Keep it happy and healthy by feeding it and letting it explore, but make sure it gets enough sleep! Good luck!");
 		txtpnIntro.setBounds(46, 160, 333, 57);
 		contentPanel.add(txtpnIntro);
 		
@@ -58,6 +54,7 @@ public class Intro extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						dispose();
 					}
 				});
 				okButton.setActionCommand("Next");
