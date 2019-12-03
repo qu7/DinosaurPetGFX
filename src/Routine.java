@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import main.resources.graphics.Intro;
+import main.resources.graphics.NewDay;
 
 public class Routine {
 	static Dinosaur tri = new Dinosaur(0, 50, 50, "Triceratops");
@@ -127,6 +128,11 @@ public class Routine {
 	}
 	
 	public static void checkHunger() {
+		if (tri.hunger >= 100) {
+			hungerText = "Starved to death";
+			death();
+		}
+		
 		if (tri.hunger >= 90) {
 			hungerText = "Starving";
 		}
@@ -161,7 +167,25 @@ public class Routine {
 		age++;
 		tri.hunger += 5;
 		textLine = tri.name + " got " + ((30 - time)) + " hours of sleep!";
+		if ((30 - time) >= 7) {
+			NewDay.qualitySleepText = tri.name + " woke up feeling well rested!";
+		}
+		else if ((30 - time) >= 5) {
+			NewDay.qualitySleepText = tri.name + " slept okay.";
+		}
+		else {
+			NewDay.qualitySleepText = tri.name + " didn't get enough sleep!";
+		}
 		time = 6.00;
+		NewDay.hoursSleepText = textLine;
+		NewDay newDay = new NewDay();
+		newDay.setVisible(true);
+		updateText();
+	}
+	
+	public static void death() {
+		Death death = new Death();
+		death.setVisible(true);
 		updateText();
 	}
 
