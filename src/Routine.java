@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
-
+import main.resources.graphics.Death;
 import main.resources.graphics.Intro;
 import main.resources.graphics.NewDay;
 
@@ -11,11 +11,11 @@ public class Routine {
 	static int key = 0;
 	static int age = 0;
 	static double time = 6.00;
-	static boolean start = true;
-	boolean life = true;
 	static boolean window = true;
-	static int rand2, rand3, rand4;			// 0, 1 
-	static String textLine, hungerText;
+	boolean start = true;
+	boolean life = true;
+	static int rand2, rand3, rand4;		
+	static String textLine, hungerText, happyText;
 	static ArrayList<String> textArray = new ArrayList<String>();
 
 	
@@ -26,6 +26,7 @@ public class Routine {
 			tri.happy += 2;
 			tri.hunger -= 5;
 			checkHunger();
+			checkHappy();
 			textLine = "You fed " + tri.name; 
 			textLine =	"He liked it!"; 
 		}
@@ -85,6 +86,7 @@ public class Routine {
 			tri.hunger += 5;
 			time += 5.00;
 			checkHunger();
+			checkHappy();
 			if (time >= 22) {
 				sleep();
 			}
@@ -122,6 +124,7 @@ public class Routine {
 		tri.hunger += 5;
 		tri.happy += 5;
 		checkHunger();
+		checkHappy();
 		if (time >= 22) {
 			sleep();
 		}
@@ -130,7 +133,7 @@ public class Routine {
 	public static void checkHunger() {
 		if (tri.hunger >= 100) {
 			hungerText = "Starved to death";
-			death();
+			endOfLife();
 		}
 		
 		if (tri.hunger >= 90) {
@@ -144,6 +147,24 @@ public class Routine {
 		}
 		else {
 			hungerText = "Not hungry";
+		}
+	}
+	
+	public static void checkHappy() {
+		if (tri.happy >= 80) {
+			happyText = "Happy";
+		}
+		
+		else if (tri.happy >= 50) {
+			happyText = "Content";
+		}
+		
+		else if (tri.happy >= 30) {
+			happyText = "Unhappy";
+		}
+		
+		else {
+			happyText = "Angry";
 		}
 	}
 	
@@ -161,6 +182,7 @@ public class Routine {
 	
 	// sleep is triggered if time reaches or passes 22.00
 	public static void sleep() {
+		window = false;
 		textLine = tri.name + " is exhausted. He fell asleep.";
 		updateText();
 		tri.happy = (int) (tri.happy + (30 - time));
@@ -183,15 +205,19 @@ public class Routine {
 		updateText();
 	}
 	
-	public static void death() {
+	public static void endOfLife() {
+		window = false;
+		String deathText = tri.name + " has died at the age of " + age + ".";
+		Death.deathMessage = deathText;
 		Death death = new Death();
 		death.setVisible(true);
 		updateText();
 	}
 
 	public Routine() {
+		window = false;
 		Intro intro = new Intro();
 		intro.setVisible(true);
-		window = false;
 	}
+	
 }
