@@ -2,7 +2,7 @@ package main.resources.graphics;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -11,12 +11,16 @@ import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class Intro extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-
+	static BufferedImage introImg;
+	
 	public static void main(String[] args) {
 		try {
 			Intro dialog = new Intro();
@@ -25,7 +29,14 @@ public class Intro extends JDialog {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		// load the intro image
+		try {
+			introImg = ImageIO.read(new File("src\\main\\resources\\graphics\\intro.bmp"));
+		} catch (IOException e) {}
+		
 	}
+	
 	public Intro() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -34,18 +45,14 @@ public class Intro extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel lblPhoto = new JLabel("");
-		lblPhoto.setBounds(215, 11, 164, 189);
-		contentPanel.add(lblPhoto);
-		
 		JTextPane txtpnIntro = new JTextPane();
 		txtpnIntro.setText("Congratulations! You are the proud parent of a baby dinosaur. Keep it happy and healthy by feeding it and letting it explore, but make sure it gets enough sleep! Good luck!");
 		txtpnIntro.setBounds(46, 160, 333, 57);
 		contentPanel.add(txtpnIntro);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(46, 11, 333, 125);
-		contentPanel.add(lblNewLabel);
+		JLabel lblIntroLabel = new JLabel();
+		lblIntroLabel.setBounds(46, 11, 333, 138);
+		contentPanel.add(lblIntroLabel);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
