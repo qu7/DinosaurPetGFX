@@ -2,7 +2,6 @@ package main.resources.graphics;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -28,9 +27,6 @@ public class NewDay extends JDialog {
 		}
 	}
 
-	/**
-	 * Create the dialog.
-	 */
 	public NewDay() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
