@@ -2,49 +2,46 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
-
-import main.resources.graphics.Intro;
-
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class DWindow extends JFrame {
-	public DWindow() {
+	public DWindow() {		
 		getContentPane().setBackground(SystemColor.text);
 		setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		
-		JLabel lblHunger = new JLabel("hunger");
+		JLabel lblHunger = new JLabel("---");
 		lblHunger.setBounds(321, 63, 103, 14);
 		getContentPane().add(lblHunger);
 		
-		JLabel lblHappy = new JLabel("happy");
+		JLabel lblHappy = new JLabel("---");
 		lblHappy.setBounds(321, 38, 103, 14);
 		getContentPane().add(lblHappy);
 		
-		JLabel lblTime = new JLabel("Time: 06:00");
+		JLabel lblTime = new JLabel("---");
 		lblTime.setBounds(321, 113, 83, 14);
 		getContentPane().add(lblTime);
 		
-		JLabel lblFood = new JLabel("Food: ");
+		JLabel lblFood = new JLabel("---");
 		lblFood.setBounds(321, 171, 103, 14);
 		getContentPane().add(lblFood);
 		
-		JLabel lblAge = new JLabel("Age");
+		JLabel lblAge = new JLabel("---");
 		lblAge.setBounds(321, 88, 103, 14);
 		getContentPane().add(lblAge);
 		
-		JLabel lblGold = new JLabel("Gold: ");
+		JLabel lblGold = new JLabel("---");
 		lblGold.setBounds(321, 196, 103, 14);
 		getContentPane().add(lblGold);
 		
-		JLabel lblKeys = new JLabel("Keys: ");
+		JLabel lblKeys = new JLabel("---");
 		lblKeys.setBounds(321, 221, 103, 14);
 		getContentPane().add(lblKeys);
 		
-		JLabel lblName = new JLabel("name");
+		JLabel lblName = new JLabel("---");
 		lblName.setBounds(321, 13, 103, 14);
 		getContentPane().add(lblName);
 		lblName.setText(Routine.tri.name);
@@ -86,7 +83,7 @@ public class DWindow extends JFrame {
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
 				lblAge.setText("Age: " + String.valueOf(Routine.age) + " days");
-				lblHappy.setText("happy");
+				lblHappy.setText(Routine.happyText);
 				lblHunger.setText(Routine.hungerText);
 			}
 		});
@@ -104,7 +101,7 @@ public class DWindow extends JFrame {
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
 				lblAge.setText("Age: " + String.valueOf(Routine.age) + " days");
-				lblHappy.setText("happy");
+				lblHappy.setText(Routine.happyText);
 				lblHunger.setText(Routine.hungerText);
 			}
 		});
@@ -122,14 +119,13 @@ public class DWindow extends JFrame {
 				lblTime.setText("Time: " + String.valueOf(Routine.time));
 				lblKeys.setText("Keys: " + String.valueOf(Routine.key));
 				lblAge.setText("Age: " + String.valueOf(Routine.age) + " days");
-				lblHappy.setText("happy");
+				lblHappy.setText(Routine.happyText);
 				lblHunger.setText(Routine.hungerText);
 			}
 		});
 		
 		btnPlay.setBounds(208, 206, 89, 44);
 		getContentPane().add(btnPlay);
-	
 	}
 		
 	public static void main(String args[]) {
